@@ -38,7 +38,7 @@ const questions = [
         noLabels: [
             "I forgot...",
             "You FORGOT?! 😱",
-            "That's one year of bad luck bestie 💀",
+            "That's one year of bad luck love 💀",
             "The candles are personally offended 🕯️😤",
             "They burned for NOTHING?! 😭",
             "Please just say yes... 🥺",
