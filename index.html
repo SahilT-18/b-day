@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday! 🎂</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="balloons-bg" id="balloons-bg"></div>
+
+    <div class="container">
+        <div class="cake-icon">🎂</div>
+
+        <div class="progress-bar">
+            <div class="progress-step active" id="step-0"></div>
+            <div class="progress-step" id="step-1"></div>
+            <div class="progress-step" id="step-2"></div>
+        </div>
+        <p class="progress-label" id="progress-label">Question 1 of 3</p>
+
+        <h1 id="question-text"></h1>
+        <p class="subtitle" id="question-subtitle"></p>
+
+        <div class="gif-container">
+            <img id="main-gif" src="" alt="birthday character">
+        </div>
+
+        <div class="buttons">
+            <button id="yes-btn" onclick="handleYesClick()"></button>
+            <button id="no-btn" onclick="handleNoClick()"></button>
+        </div>
+        <div id="tease-toast"></div>
+    </div>
+
+    <audio id="bg-music" loop autoplay muted>
+        <source src="music/birthday-song.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="music-toggle" onclick="toggleMusic()" title="Toggle music">🔊</button>
+
+    <script src="script.js"></script>
+</body>
+</html>

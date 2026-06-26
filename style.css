@@ -1,0 +1,278 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a0533;
+    font-family: 'Nunito', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-image:
+        radial-gradient(circle at 20% 80%, #3d0a6b 0%, transparent 45%),
+        radial-gradient(circle at 80% 20%, #0a1f6b 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, #2a0a4a 0%, transparent 65%);
+}
+
+/* ── Balloons ── */
+.balloons-bg {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.balloon {
+    position: absolute;
+    font-size: 2rem;
+    bottom: -60px;
+    animation: floatUp linear infinite;
+    opacity: 0.55;
+}
+
+@keyframes floatUp {
+    0%   { transform: translateY(0) rotate(-8deg); opacity: 0.55; }
+    50%  { transform: translateY(-50vh) rotate(8deg); opacity: 0.5; }
+    100% { transform: translateY(-110vh) rotate(-6deg); opacity: 0; }
+}
+
+/* ── Container ── */
+.container {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 32px 20px;
+}
+
+/* ── Cake icon ── */
+.cake-icon {
+    font-size: 3rem;
+    animation: cakePop 1.5s ease-in-out infinite alternate;
+    display: block;
+    margin-bottom: 12px;
+}
+
+@keyframes cakePop {
+    from { transform: scale(1) rotate(-4deg); }
+    to   { transform: scale(1.15) rotate(4deg); }
+}
+
+/* ── Progress bar ── */
+.progress-bar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.progress-step {
+    width: 36px;
+    height: 6px;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, 0.15);
+    transition: background 0.4s ease, transform 0.3s ease;
+}
+
+.progress-step.active {
+    background: #ffd700;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+    transform: scaleY(1.3);
+}
+
+.progress-step.done {
+    background: rgba(255, 215, 0, 0.4);
+    transform: scaleY(1);
+}
+
+.progress-label {
+    color: rgba(212, 170, 255, 0.7);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+/* ── Heading ── */
+h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.2rem;
+    color: #ffd700;
+    font-weight: 400;
+    margin-bottom: 4px;
+    text-shadow:
+        0 0 20px rgba(255, 215, 0, 0.6),
+        0 0 40px rgba(255, 165, 0, 0.3);
+    letter-spacing: 0.5px;
+    transition: opacity 0.3s ease;
+}
+
+.subtitle {
+    color: #d4aaff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+}
+
+/* ── GIF ── */
+.gif-container {
+    margin: 12px auto;
+    display: flex;
+    justify-content: center;
+}
+
+#main-gif {
+    width: 190px;
+    height: 190px;
+    object-fit: contain;
+    border-radius: 20px;
+    filter: drop-shadow(0 8px 24px rgba(255, 215, 0, 0.25));
+    transition: opacity 0.3s ease;
+}
+
+/* ── Buttons ── */
+.buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+
+#yes-btn {
+    background: linear-gradient(135deg, #ffd700, #ff8c00);
+    color: #1a0533;
+    border: none;
+    border-radius: 16px;
+    font-size: 1.5rem;
+    font-weight: 900;
+    font-family: 'Nunito', sans-serif;
+    padding: 18px 45px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 6px 24px rgba(255, 215, 0, 0.5);
+    letter-spacing: 0.5px;
+}
+
+#yes-btn:hover {
+    transform: scale(1.06) translateY(-2px);
+    box-shadow: 0 10px 32px rgba(255, 215, 0, 0.65);
+}
+
+#yes-btn:active {
+    transform: scale(0.97);
+}
+
+#no-btn {
+    background: linear-gradient(135deg, #6a1fc2, #4a0e8f);
+    color: #d4aaff;
+    border: 2px solid #8b3de8;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+    padding: 12px 28px;
+    cursor: pointer;
+    transition: background 0.2s, left 0.25s ease, top 0.25s ease;
+    box-shadow: 0 4px 14px rgba(106, 31, 194, 0.5);
+}
+
+#no-btn:hover {
+    background: linear-gradient(135deg, #4a0e8f, #36097a);
+}
+
+/* ── Tease toast ── */
+#tease-toast {
+    margin-top: 14px;
+    font-size: 1rem;
+    color: #ffd700;
+    font-weight: 700;
+    font-style: italic;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    min-height: 1.5rem;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+#tease-toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Music toggle ── */
+#music-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s;
+    z-index: 100;
+}
+
+#music-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* ── Yes celebration page ── */
+.yes-container h1.yes-title {
+    font-size: 2.6rem;
+    animation: bounceTitle 0.6s ease infinite alternate;
+}
+
+@keyframes bounceTitle {
+    from { transform: translateY(0) rotate(-1deg); }
+    to   { transform: translateY(-12px) rotate(1deg); }
+}
+
+.yes-message {
+    font-size: 1.3rem;
+    color: #ffd700;
+    font-weight: 700;
+    margin-top: 16px;
+    animation: fadeIn 1s ease 0.5s both;
+    text-shadow: 0 0 16px rgba(255, 215, 0, 0.4);
+    line-height: 1.6;
+}
+
+.yes-sub {
+    font-size: 1rem;
+    color: #d4aaff;
+    font-weight: 700;
+    margin-top: 10px;
+    animation: fadeIn 1s ease 1s both;
+    opacity: 0.85;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.yes-container #main-gif {
+    width: 240px;
+    height: 240px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+    h1 { font-size: 1.7rem; }
+    #yes-btn { font-size: 1.2rem; }
+    #main-gif { width: 160px; height: 160px; }
+}
